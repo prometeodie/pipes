@@ -1,0 +1,114 @@
+<div class="font-color">
+    <h1>Pipe no tan comunes</h1>
+    <p>
+        Pipes incluidos en angular - Usualmente en el common module
+    </p>
+</div>
+
+<div class="p-grid">
+    <div class="p-col p-md-6">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <ul>
+                <li>Saludos {{ nombreMostrar }}, es un placer {{ generoMostrar | i18nSelect:invitacionMapa }} al evento.</li>
+            </ul>
+            
+              <hr>
+              <button pButton type="button" label="Cambiar Persona"class="p-button-raised p-button-text"
+                                            (click)="cambiarPersona()"></button>
+        </p-fieldset>
+    </div>
+
+        <div class="p-col p-md-6">
+            <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+                <p>
+                    actualmente {{clientes.length | i18nPlural:clientesMapa}} 
+                </p>
+              
+                <button pButton type="button" label="Eliminar Cliente" class="p-button-text p-button-raised p-button-danger"
+                                              (click)="eliminarClientes()"></button>
+
+                
+            </p-fieldset>
+        </div>
+        
+        <div class="p-col p-md-6">
+            <p-fieldset [toggleable]="true">
+                <div class="p-col p-md-6">
+                    <b>Pipe slice 0:2</b>
+                <pre>{{clientes | slice:0:2}}</pre>
+
+                <b>Pipe slice 1:3</b>
+                <pre>{{clientes | slice:1:3}}</pre>
+                
+                </div>
+                <div class="p-col p-md-6">
+                <b>Pipe slice 0:4</b>
+                <pre>{{clientes | slice:1:3}}</pre>
+
+                <b>Pipe slice 3:3</b>
+                <pre>{{clientes | slice:3:3}}</pre>
+                <p> este pipe imprime desde la posicion que le indiquemos (valor obligatorio)
+                    hasta la posicion que indiquemos(valor opcional), excluye al elemento que este en la posicion
+                    final que indicamos Ej: [pepito, papacho, elcho, tito] si seleccionamos "slice:0:3" 
+                    imprime [pepito, papcho, elcho] excluyendo a tito.
+                </p>
+                </div>
+                
+            </p-fieldset>
+        </div>
+        
+        <div class="p-col p-md-6">
+            <p-fieldset legend="Json Pipe" [toggleable]="true">
+                <h1>Arreglo de objetos</h1>
+                <pre>{{heroes | json}}</pre>
+                <p>
+                    Este Pipe genera un json de un objeto, permitiendo imprimirlo y
+                    que no aparezca el famoso objet objet
+                </p>
+            </p-fieldset>
+        </div>
+
+
+        <div class="p-col p-md-6">
+            <p-fieldset legend="KeyValue Pipe " [toggleable]="true">
+                <ul>
+
+                    <li *ngFor="let item of objeto | keyvalue">
+                        {{item.key | titlecase}} : {{item.value  | titlecase}}
+                    </li>
+
+                </ul>
+                <p>
+                    Este Pipe genera un arreglo de un objeto,lo cual te deja imprimir las propiedades 
+                    haciendo un ciclo "for", el pipe se aplica directamente dentro del ciclo.
+                </p>
+            </p-fieldset>
+        </div>
+
+        <div class="p-col p-md-6">
+            <p-fieldset legend="Async Pipe" [toggleable]="true">
+                <pre *ngIf="!(miObservable | async)">Cargando Observable....</pre>
+                <pre>{{miObservable | async}}</pre>
+                <hr>
+                <pre *ngIf="!(miPromise | async)">Cargando Data (Resolviendo promesa)</pre>
+                <pre>{{miPromise | async}}</pre>
+                <p>Este pipe se suscribe automaticamente creando una instancia
+                    (suscripcion porcada vez que lo usamos), nos deja suscribirnos apromesas y Observable <p>
+            </p-fieldset>
+        </div>
+        
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

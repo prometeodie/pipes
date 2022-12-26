@@ -1,0 +1,42 @@
+
+<div class="font-color">
+    <h1>Decimal pipe y porcentajes</h1>
+    <p>
+       pipes incluidos en angular - usualmente en el common module 
+    </p>
+</div>
+
+<div class="p-grid">
+    <div class="p-col-2">
+        <!-- tema viejo, con [] enlazas la propiedad -->
+        <p-card header="Ventas Netas"
+                [subheader]="subHeader">
+                <!-- para ver las diferentes utilidades del pipe chekear la documentacion oficial
+                en este caso con 1 indico la parte entera(se puede no poner ese uno pero es mejor a la vista si esta)
+                y luego del punto indico la cantidad de decimales que necesito, el pipe redondea de ser necesario o 
+                completa con 0 tambien se puede poner el locale y que ponga la forma que se le los 
+                numeros segun cada pais-->
+            {{ ventasNetas | number:'1.2-4' }}
+        </p-card>
+    </div>
+    
+    <div class="p-col-3">
+        <!-- el pipe currency(divisa/moneda) se usa para poner el simbolo de la divisa que se necesite y se puede
+        customizar, por defecto viene la divisa dolar  -->
+        <p-card header="Ventas Bruto"
+                [subheader]="subHeader">
+                <ul>
+                    <li>Currency por defecto: {{ (ventasNetas + 200000) | currency }}</li>
+                    <li>Currency custom: {{ (ventasNetas + 200000) | currency:'CAD':'symbol-narrow' : '1.4-4' }}</li>
+                </ul>
+        </p-card>
+    </div>
+
+    <div class="p-col-2">
+        <!-- solo convierte un numero en porcentaje, no hace el persentaje de ningun numero -->
+        <p-card header="Ganacia porcentual"
+                [subheader]="subHeader">
+                {{porcentajes | percent:'1.2-2'}}
+        </p-card>
+    </div>
+</div>

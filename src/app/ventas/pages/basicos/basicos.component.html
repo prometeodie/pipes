@@ -1,0 +1,80 @@
+
+<div class="font-color">
+    <h1>Pipes basicos</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente incluidos en el commonModule
+    </p>
+</div>
+
+<!-- con p-grid hago una fila y dentro pongo las columnas, cada fila esta repartida en 12 columna -->
+
+<div class="p-grid">
+    <!-- se coloca segun la cantidad de columna el numero de espacio que va a ocupar, en este caso 
+    tenemos 3 columnasy cada una ocupa el espacio de 4, recorda que cada fila puede tener hasta 12 columnas -->
+    <div class="p-col-4">
+        <p-card header="UpperCase"
+                [subheader]=" nombreLower">
+                {{nombreLower | uppercase}}
+        </p-card>
+    </div>
+
+    <div class="p-col-4">
+        <p-card header="LowerCase"
+                [subheader]="nombreUpper">
+                {{ nombreUpper | lowercase }}
+        </p-card>
+    </div>
+
+    <div class="p-col-4">
+        <p-card header="TitleCase" 
+                [subheader]="nombreCompleto">
+                {{nombreCompleto | titlecase}}
+        </p-card>
+    </div>
+
+</div>
+
+<div class="p-grid">
+
+    <div class="p-col-6">
+        <p-card>
+            <ul>
+                <li>Fecha</li>
+                <li>Fecha | Date</li>
+                <li>Fecha | Date:'long'</li>
+                <li>Fecha | Date:'short'</li>
+                <li>Fecha | Date:'custom'</li>
+                <li>fecha en tiempo real</li>
+            </ul>
+
+            <hr>
+
+            <ul>
+                <li>Fecha con distinto GMT e localeIdioma</li>
+                <li>Fecha con otro (Fr) GMT e localeIdioma</li>
+            </ul>
+        </p-card>
+    </div>
+
+    <div class="p-col-6">
+        <p-card>
+            <ul>
+                <li>{{fecha}}</li>
+                <li>{{fecha | date}}</li>
+                <li>{{fecha | date:'short'}}</li>
+                <li>{{fecha | date:'long'}}</li>
+                <li>{{fecha | date:'EE-MMM-YY--ww/GG'}}</li>
+                <li>{{fechaTiempoReal | date:'long' }}</li>
+            </ul>
+
+            <hr>
+
+            <ul>
+    <!-- para cambiar el locale language hay que registrarlo el unico por defecto es el ingles (EN) -->
+                <li>{{fecha | date:'long': 'GMT-4': 'es-AR'}}</li>
+                <li>{{fechaTiempoReal | date:'long': 'GMT+1': 'fr'}}</li>
+            </ul>
+        </p-card>
+    </div>
+
+</div>
